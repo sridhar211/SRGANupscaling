@@ -8,6 +8,8 @@ wheel>=0.29
 numpy
 pandas
 scikit-learn
+matplotlib
+tensorflow
 
 # tests/linter
 black
@@ -27,3 +29,7 @@ six>=1.14
 joblib
 memoized-property
 termcolor
+tqdm
+
+# comupter vision
+opencv-python
