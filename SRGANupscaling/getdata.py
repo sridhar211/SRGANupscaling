@@ -1,48 +1,74 @@
 from google.cloud import storage
-import tempfile
-import cv2
-import os
+import pandas as pd
+from sklearn import linear_model
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-import os
+import joblib
 import cv2
-import numpy as np
-import matplotlib.pyplot as plt
+from google.cloud import storage #, vision
 # from wand.image import Image
 
 BUCKET_NAME = 'srgan-wagon-project'
-STORAGE_LOCATION_hr = 'datasets/kaggle100-original/HR'
-STORAGE_LOCATION_lr = 'datasets/kaggle100-original/LR'
+BUCKET_TRAIN_DATA_PATH = 'datasets/kaggle100-original'
+MODEL_NAME = 'SRGANupscaling'
+MODEL_VERSION = 'v1'
 
-def get_images_gcp(prefix):
+storage_client = storage.Client()
+# vision_client = vision.ImageAnnotatorClient()
 
-    client = storage.Client()
+def download_blob(bucket_name=BUCKET_NAME, prefix='datasets/kaggle100-original/HR/', delimiter='/', source_blob_name="datasets/kaggle100-original/HR/0.png", destination_file_name="/Users/melissasiddle/code/sridhar211/SRGANupscaling/raw_data/file.png"):
+    """Downloads a blob from the bucket."""
 
-    bucket = client.bucket(BUCKET_NAME)
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
 
-    blobs = bucket.list_blobs(prefix)
-    images = []
+    blobs = storage_client.list_blobs(bucket_name, prefix=prefix, delimiter=delimiter)
 
+    # print("Blobs:")
+    # for blob in blobs:
+    #     print(blob.name)
+
+    lr_list = []
     for blob in blobs:
-        _, temp_local_filename = tempfile.mkstemp()
+        lr_list.append(blob.name)
 
-        # Download file from bucket.
-        blob.download_to_filename(temp_local_filename)
-        img = cv2.imread(temp_local_filename)
-        images.append(img)
-        os.remove(temp_local_filename)
 
-    return np.array(images)
+
+# def get_data():
+#     """method to get the data (or a portion of it) from google cloud bucket"""
+
+#     # file_name = file_data["name"]
+#     # bucket_name = file_data["bucket"]
+
+#     blob = storage_client.bucket(BUCKET_NAME).get_blob('/datasets/')
+#     print(blob)
+#     # blob_uri = f"gs://{bucket_name}/{file_name}"
+#     # blob_source = vision.Image(source=vision.ImageSource(image_uri=blob_uri))
+#     # current_blob.download_to_filename(temp_local_filename)
+
+#     return
+
+
+def compute_distance(df,
+                     start_lat="pickup_latitude",
+                     start_lon="pickup_longitude",
+                     end_lat="dropoff_latitude",
+                     end_lon="dropoff_longitude"):
+    lat_1_rad, lon_1_rad = np.radians(df[start_lat].astype(float)), np.radians(df[start_lon].astype(float))
+    lat_2_rad, lon_2_rad = np.radians(df[end_lat].astype(float)), np.radians(df[end_lon].astype(float))
+    dlon = lon_2_rad - lon_1_rad
+    dlat = lat_2_rad - lat_1_rad
+
+    a = np.sin(dlat / 2.0) ** 2 + np.cos(lat_1_rad) * np.cos(lat_2_rad) * np.sin(dlon / 2.0) ** 2
+    c = 2 * np.arcsin(np.sqrt(a))
+    return 6371 * c
 
 
 def preprocess(df):
     """method that pre-process the data"""
-    images_hr=get_images_gcp(prefix=STORAGE_LOCATION_hr)
-    images_lr=get_images_gcp(prefix=STORAGE_LOCATION_lr)
-    X = images_lr/ 255
-    y = images_hr/ 255
-    return X, y
+    df["distance"] = compute_distance(df)
+    X_train = df[["distance"]]
+    y_train = df["fare_amount"]
+    return X_train, y_train
 
 
 def train_model(X_train, y_train):
