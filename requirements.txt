@@ -10,6 +10,7 @@ pandas
 scikit-learn
 matplotlib
 tensorflow
+tensorflow_hub
 
 # tests/linter
 black
