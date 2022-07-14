@@ -43,5 +43,17 @@ def plot_image_comparison(lr_image, sr_image, hr_image):
     plt.subplot(233)
     plt.title('Orig. HR image')
     plt.imshow(hr_image)
+    plt.show();
 
+def plot_encode_comparison(sr_image, en_image):
+    '''
+    Plots a side-by-side comparison of sr and auto encoded images passed in arguments
+    '''
+    plt.figure(figsize=(20, 20))
+    plt.subplot(221)
+    plt.title('Superresolution')
+    plt.imshow(sr_image)
+    plt.subplot(222)
+    plt.title('Auto Encoded')
+    plt.imshow(en_image)
     plt.show();

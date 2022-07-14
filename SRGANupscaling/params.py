@@ -15,3 +15,12 @@ STORAGE_LOCATION_FLICKR_HR = 'datasets/flickr25000/hr_images'
 
 # Model url on tensorflow hub
 MODEL_TFHUB = "https://tfhub.dev/captain-pool/esrgan-tf2/1"
+
+# No. of blocks for encoder-decoder
+NUMBER_BLOCKS=2
+
+# Encoder url on tensorflow hub
+ENCODE_TFHUB = f"https://tfhub.dev/emilutz/vgg19-block{NUMBER_BLOCKS}-conv2-unpooling-encoder/1"
+
+# Decoder url on tensorflow hub
+DECODE_TFHUB = f"https://tfhub.dev/emilutz/vgg19-block{NUMBER_BLOCKS}-conv2-unpooling-decoder/1"
