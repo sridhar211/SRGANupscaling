@@ -30,4 +30,4 @@ termcolor
 tqdm
 
 # comupter vision
-opencv-python
+opencv-python-headless

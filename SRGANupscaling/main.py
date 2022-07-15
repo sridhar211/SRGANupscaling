@@ -1,9 +1,6 @@
 import numpy as np
-import cv2
 from SRGANupscaling.model import image_upscale
 from PIL import Image
-import tensorflow as tf
-
 
 def find_split_size(img_height, img_width):
     '''
