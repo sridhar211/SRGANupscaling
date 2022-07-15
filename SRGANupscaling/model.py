@@ -20,7 +20,7 @@ def image_upscale(lr_images):
 
 def image_auto_encode(sr_images):
     '''
-    Auto encodes image from SRGAN to improve quality
+    Auto encodes images from SRGAN to improve quality
     '''
     encoder = hub.KerasLayer(ENCODE_TFHUB)
     decoder = hub.KerasLayer(DECODE_TFHUB)
