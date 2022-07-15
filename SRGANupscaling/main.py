@@ -1,16 +1,13 @@
 import numpy as np
-import cv2
 from SRGANupscaling.model import image_upscale
 from PIL import Image
-import tensorflow as tf
-
 
 def find_split_size(img_height, img_width):
     '''
     Determines the ideal shape and size for spliting images of input size
     '''
-    height_options = [i for i in range(32,img_height) if img_height%i== 0]
-    width_options = [i for i in range(32,img_width) if img_width%i== 0]
+    height_options = [i for i in range(32,img_height+1) if img_height%i== 0]
+    width_options = [i for i in range(32,img_width+1) if img_width%i== 0]
     tile_height = height_options[-1]
     tile_width = width_options[-1]
     n_rows=img_height // tile_height
