@@ -7,27 +7,10 @@ streamlit
 
 # data science
 numpy
-scikit-learn
-matplotlib
 tensorflow
 tensorflow_hub
 
-# tests/linter
-black
-coverage
-flake8
-pytest
-yapf
-
-# API
-gcsfs
 google-cloud-storage
-
-# utilities
-six>=1.14
-joblib
-termcolor
-tqdm
 
 # comupter vision
 opencv-python-headless
