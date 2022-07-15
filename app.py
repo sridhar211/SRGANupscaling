@@ -6,6 +6,7 @@ import os
 import streamlit.components.v1 as components
 from io import BytesIO
 from SRGANupscaling.main import super_resolution
+import time
 
 # with open('style.css') as f:
 #     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -15,7 +16,6 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="auto",
 )
-
 
 # st.header("Pixel Perfect")
 main_image = Image.open('static/main_banner.png')
@@ -35,9 +35,8 @@ st.info("✨ It can used for anything! From preserving old media material to \
 
 uploaded_file = st.file_uploader("Upload Image 🚀", type=["png","jpg","bmp","jpeg"])
 
-def download_success():
-    st.balloons()
-    st.success('✅ Download Successful !!')
+
+
 
 
 if uploaded_file is not None:
@@ -76,12 +75,23 @@ if uploaded_file is not None:
       mime="image/jpeg",
 
       ):
-        download_success()
+
+        st.balloons()
+        st.success('✅ Download Successful !!')
+
 
 
 
 else:
     st.warning('⚠ Please upload your Image file 😯')
+
+# import time
+
+# my_bar = st.progress(0)
+
+# for percent_complete in range(100):
+#      time.sleep(0.1)
+#      my_bar.progress(percent_complete + 1)
 
 
 with st.expander("How does it work?"):

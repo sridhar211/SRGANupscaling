@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Fri Jul 15 13:54:18 2022
+# Make data base, printed on Fri Jul 15 16:14:17 2022
 
 # Variables
 
@@ -116,7 +117,7 @@ USER = oba
 # makefile
 .DEFAULT_GOAL := install_requirements
 # environment
-TERM_SESSION_ID = 25E7AE2A-7863-435F-9F3F-3A630AEE2DCA
+TERM_SESSION_ID = CC6BFB15-AC8A-4C40-BE04-181B361467FD
 # environment
 LESS = -R
 # automatic
@@ -150,7 +151,7 @@ TERM_PROGRAM_VERSION = 443
 # environment
 NVM_DIR = /Users/oba/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.43827992.43827998.C1F46D4B-7803-4D0C-90D4-9059280AEA9B
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.43827992.43827998.75706A4D-B8F7-4897-BC46-2EC10AA3C87B
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 81)
@@ -214,9 +215,9 @@ VSCODE_PID = 57657
 
 # Directories
 
-# . (device 16777222, inode 43492530): 20 files, no impossibilities.
+# . (device 16777222, inode 43492530): 21 files, no impossibilities.
 
-# 20 files, no impossibilities in 1 directories.
+# 21 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -298,7 +299,6 @@ gcp_submit_training:
 
 build:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 49):
@@ -309,6 +309,7 @@ upload_data:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  commands to execute (from `Makefile', line 88):
 	@gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
 	
@@ -445,6 +446,6 @@ install:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Jul 15 13:54:18 2022
+# Finished Make data base on Fri Jul 15 16:14:17 2022
 
  
