@@ -48,7 +48,7 @@ jobs:
         pip install -r requirements.txt
     - name: Install package and test
       run: |
-        make install test clean
+        make install clean
 
     strategy:
       matrix:
