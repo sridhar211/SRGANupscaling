@@ -16,6 +16,8 @@ STORAGE_LOCATION_FLICKR_HR = 'datasets/flickr25000/hr_images'
 # Model url on tensorflow hub
 MODEL_TFHUB = "https://tfhub.dev/captain-pool/esrgan-tf2/1"
 
+MODEL = 'srgan_model'
+
 # No. of blocks for encoder-decoder
 NUMBER_BLOCKS=2
 

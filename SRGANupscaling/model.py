@@ -3,7 +3,7 @@ import tensorflow_hub as hub
 import os
 import cv2
 import numpy as np
-from SRGANupscaling.params import MODEL_TFHUB, ENCODE_TFHUB, DECODE_TFHUB
+from SRGANupscaling.params import MODEL_TFHUB, ENCODE_TFHUB, DECODE_TFHUB, MODEL
 
 def image_upscale(lr_images):
     '''
