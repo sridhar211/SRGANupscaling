@@ -29,7 +29,10 @@ st.write("It can used for anything! From preserving old media material to \
 
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-st.info('✨ Supports all popular image formats 📷 - PNG, JPG, BMP 😉')
+st.info("✨ It can used for anything! From preserving old media material to \
+         enhancing a microscope’s view, or identifying an individual in CCTV - \
+         super-resolution’s impact is widespread and extremely evident.😉")
+
 uploaded_file = st.file_uploader("Upload Image 🚀", type=["png","jpg","bmp","jpeg"])
 
 def download_success():
@@ -44,12 +47,17 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
 
     with col1:
+        st.markdown("---")
         st.image(image, caption='Input Image', use_column_width=True)
+
     #st.write(os.listdir())
 
     with col2:
         im = super_resolution(image)
-        st.image(im, caption='Output Image', use_column_width=True)
+        st.markdown("---")
+        st.image(im,  caption='Output Image', use_column_width=True)
+
+
 
     # Convert Image?
 
@@ -61,12 +69,17 @@ if uploaded_file is not None:
     rgb_im.save(buf, format="JPEG")
     byte_im = buf.getvalue()
 
-    btn = st.download_button(
-      label="Download Image",
+    if st.download_button(
+      label="Download Image ",
       data=byte_im,
-      file_name="imagename.png",
+      file_name=str("super " + uploaded_file.name),
       mime="image/jpeg",
-      )
+
+      ):
+        download_success()
+
+
+
 else:
     st.warning('⚠ Please upload your Image file 😯')
 
