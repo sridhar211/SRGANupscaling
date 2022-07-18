@@ -18,6 +18,18 @@ def image_upscale(lr_images):
     sr_images = tf.cast(sr_images, tf.uint8)
     return sr_images
 
+def image_upscale_model(lr_images,model):
+    '''
+    Upscales lr_images by 4x resolution and returns SR images
+    Takes input of shape (Batch size, height, width, rgb channels)
+    '''
+    temp=tf.cast(lr_images, tf.float32)
+    sr_images=model(temp)
+    sr_images = np.asarray(sr_images)
+    sr_images = tf.clip_by_value(sr_images, 0, 255)
+    sr_images = tf.cast(sr_images, tf.uint8)
+    return sr_images
+
 def image_auto_encode(sr_images):
     '''
     Auto encodes images from SRGAN to improve quality

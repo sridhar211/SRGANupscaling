@@ -1,3 +1,4 @@
+import imp
 import streamlit as st
 import numpy as np
 from matplotlib import pyplot
@@ -5,12 +6,10 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 import streamlit.components.v1 as components
 from io import BytesIO
-from SRGANupscaling.main import super_resolution
-import time
-from scipy import ndimage, misc
-import json
-import requests
 
+from SRGANupscaling.main import super_resolution_model
+from SRGANupscaling.params import MODEL
+import tensorflow_hub as hub
 
 
 CSS = """
@@ -38,11 +37,13 @@ with st.sidebar:
             enhancing a microscope’s view, or identifying an individual in CCTV - \
             super-resolution’s impact is widespread and extremely evident.")
     st.info("✨ It can used for anything! From preserving old media material to \
-         enhancing a microscope’s view, or identifying an individual in CCTV - \
-         super-resolution’s impact is widespread and extremely evident.😉")
 
+# Load the model (only executed once!)
+@st.cache
+def load_model():
+	  return hub.load(MODEL)
 
-
+model = load_model()
 
 
 # st.header("Pixel Perfect")
@@ -79,10 +80,9 @@ if uploaded_file is not None:
     #st.write(os.listdir())
 
     with col2:
-        im = super_resolution(image)
-        st.markdown("---")
-        st.image(im,  caption='Output Image', use_column_width=True)
 
+        im = super_resolution_model(image, model)
+        st.image(im, caption='Output Image', use_column_width=True)
 
 
     # Convert Image?

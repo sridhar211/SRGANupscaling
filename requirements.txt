@@ -11,7 +11,5 @@ matplotlib
 tensorflow
 tensorflow_hub
 
-google-cloud-storage
-
 # comupter vision
 opencv-python-headless
