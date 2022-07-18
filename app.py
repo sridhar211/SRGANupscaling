@@ -37,6 +37,8 @@ with st.sidebar:
             enhancing a microscope’s view, or identifying an individual in CCTV - \
             super-resolution’s impact is widespread and extremely evident.")
     st.info("✨ It can used for anything! From preserving old media material to \
+             enhancing a microscope’s view, or identifying an individual in CCTV - \
+             super-resolution’s impact is widespread and extremely evident.😉")
 
 # Load the model (only executed once!)
 @st.cache
@@ -81,6 +83,7 @@ if uploaded_file is not None:
 
     with col2:
 
+        st.markdown("---")
         im = super_resolution_model(image, model)
         st.image(im, caption='Output Image', use_column_width=True)
 
