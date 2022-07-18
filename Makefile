@@ -128,3 +128,7 @@ gcp_submit_training:
 		--runtime-version=${RUNTIME_VERSION} \
 		--region ${REGION} \
 		--stream-logs
+
+
+streamlit:
+	@streamlit run app.py
