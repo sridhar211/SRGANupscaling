@@ -10,7 +10,7 @@ import time
 from scipy import ndimage, misc
 import json
 import requests
-from streamlit_option_menu import option_menu
+
 
 
 CSS = """
@@ -32,12 +32,6 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="auto",
 )
-
-selected = option_menu(
-    menu_title = "Compare",
-    options=["Before","After"],
-)
-
 with st.sidebar:
     st.title("Upscale and enhance any image by using our SRGAN model.")
     st.write("It can used for anything! From preserving old media material to \
@@ -68,39 +62,26 @@ st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', uns
 
 uploaded_file = st.file_uploader("Upload Image 🚀", type=["png","jpg","bmp","jpeg"])
 
-src_image = load_image(uploaded_file)
-image = Image.open(uploaded_file)
 
 
 
-if selected == "Before":
+
+if uploaded_file is not None:
+    col1, col2 = st.columns([1,1])
+
+    #src_image = load_image(uploaded_file)
+    image = Image.open(uploaded_file)
+
+    with col1:
         st.markdown("---")
         st.image(image, caption='Input Image', use_column_width=True)
 
-if selected == "After":
+    #st.write(os.listdir())
+
+    with col2:
         im = super_resolution(image)
         st.markdown("---")
         st.image(im,  caption='Output Image', use_column_width=True)
-
-        rgb_im = im.convert('RGB')
-        buf = BytesIO()
-        rgb_im.save(buf, format="JPEG")
-        byte_im = buf.getvalue()
-
-# if uploaded_file is not None:
-#     col1, col2 = st.columns([1,1])
-
-
-#     with col1:
-#         st.markdown("---")
-#         st.image(image, caption='Input Image', use_column_width=True)
-
-#     #st.write(os.listdir())
-
-#     with col2:
-#         im = super_resolution(image)
-#         st.markdown("---")
-#         st.image(im,  caption='Output Image', use_column_width=True)
 
 
 
@@ -109,21 +90,21 @@ if selected == "After":
     # if im.mode in ("RGBA", "P"):
     #     im = im.convert("RGB")
 
-    # rgb_im = im.convert('RGB')
-    # buf = BytesIO()
-    # rgb_im.save(buf, format="JPEG")
-    # byte_im = buf.getvalue()
+    rgb_im = im.convert('RGB')
+    buf = BytesIO()
+    rgb_im.save(buf, format="JPEG")
+    byte_im = buf.getvalue()
 
-if st.download_button(
-    label="Download Image ",
-    data=byte_im,
-    file_name=str("super " + uploaded_file.name),
-    mime="image/jpeg",
+    if st.download_button(
+      label="Download Image ",
+      data=byte_im,
+      file_name=str("super " + uploaded_file.name),
+      mime="image/jpeg",
 
-    ):
+      ):
 
-    st.balloons()
-    st.success('✅ Download Successful !!')
+        st.balloons()
+        st.success('✅ Download Successful !!')
 
 
 
