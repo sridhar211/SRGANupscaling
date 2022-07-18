@@ -1,5 +1,6 @@
+from pyexpat import model
 import numpy as np
-from SRGANupscaling.model import image_upscale
+from SRGANupscaling.model import image_upscale, image_upscale_model
 from PIL import Image
 
 def find_split_size(img_height, img_width):
@@ -58,6 +59,21 @@ def super_resolution(image_uploaded):
     sr_image=image_merge(n_rows, n_cols, tiles_upscale)
     final=Image.fromarray(sr_image)
     return final
+
+
+def super_resolution_model(image_uploaded, model):
+    '''
+    Final function to call to super resolution image with model as arguments
+    '''
+    image=np.array(image_uploaded)
+    img_height, img_width, channels = image.shape
+    n_rows, n_cols, tile_height, tile_width = find_split_size(img_height, img_width)
+    tiles = image_split(image, (tile_height, tile_width), (n_rows,n_cols))
+    tiles_upscale = np.asarray(image_upscale_model(tiles, model))
+    sr_image=image_merge(n_rows, n_cols, tiles_upscale)
+    final=Image.fromarray(sr_image)
+    return final
+
 
 if __name__ == '__main__':
     pass
