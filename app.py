@@ -1,10 +1,6 @@
-import imp
 import streamlit as st
 import numpy as np
-from matplotlib import pyplot
-from PIL import Image, ImageDraw, ImageFont
-import os
-import streamlit.components.v1 as components
+from PIL import Image
 from io import BytesIO
 
 from SRGANupscaling.main import super_resolution_model
