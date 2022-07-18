@@ -7,6 +7,7 @@ import streamlit.components.v1 as components
 from io import BytesIO
 from SRGANupscaling.main import super_resolution
 import time
+from scipy import ndimage, misc
 
 # with open('style.css') as f:
 #     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
