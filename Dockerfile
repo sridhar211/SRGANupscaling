@@ -5,7 +5,7 @@ COPY requirements.txt /requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-EXPOSE 8800
+EXPOSE 8501
 
 COPY SRGANupscaling /SRGANupscaling
 COPY app.py /app.py
@@ -16,6 +16,4 @@ COPY srgan_model /srgan_model
 
 RUN pip install .
 
-ENTRYPOINT ["streamlit", "run"]
-
-CMD ["app.py"]
+CMD streamlit run app.py
