@@ -17,22 +17,34 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="auto",
 )
+with st.sidebar:
+    st.title("Upscale and enhance any image by using our SRGAN model.")
+    st.write("It can used for anything! From preserving old media material to \
+            enhancing a microscope’s view, or identifying an individual in CCTV - \
+            super-resolution’s impact is widespread and extremely evident.")
+    st.info("✨ It can used for anything! From preserving old media material to \
+         enhancing a microscope’s view, or identifying an individual in CCTV - \
+         super-resolution’s impact is widespread and extremely evident.😉")
+
+
+
+
 
 # st.header("Pixel Perfect")
 main_image = Image.open('static/main_banner.png')
 st.image(main_image,use_column_width='auto')
-st.title("Upscale and enhance any image by using our SRGAN model.")
-st.write("It can used for anything! From preserving old media material to \
-         enhancing a microscope’s view, or identifying an individual in CCTV - \
-         super-resolution’s impact is widespread and extremely evident.")
+# st.title("Upscale and enhance any image by using our SRGAN model.")
+# st.write("It can used for anything! From preserving old media material to \
+#          enhancing a microscope’s view, or identifying an individual in CCTV - \
+#          super-resolution’s impact is widespread and extremely evident.")
 
 
 
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-st.info("✨ It can used for anything! From preserving old media material to \
-         enhancing a microscope’s view, or identifying an individual in CCTV - \
-         super-resolution’s impact is widespread and extremely evident.😉")
+# st.info("✨ It can used for anything! From preserving old media material to \
+#          enhancing a microscope’s view, or identifying an individual in CCTV - \
+#          super-resolution’s impact is widespread and extremely evident.😉")
 
 uploaded_file = st.file_uploader("Upload Image 🚀", type=["png","jpg","bmp","jpeg"])
 
