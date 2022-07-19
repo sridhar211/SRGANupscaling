@@ -1,5 +1,5 @@
 import streamlit as st
-import numpy as np
+#import numpy as np
 from PIL import Image
 from io import BytesIO
 import plotly.express as px
@@ -28,9 +28,9 @@ with st.sidebar:
             super-resolution’s impact is widespread and extremely evident.")
     st.image('static/super_resolution.png')
     with st.expander("How does it work?"):
-     st.write("""
+        st.write("""
          To upscale your image, we use a SRGAN model to super-resolutionise your image with minimal information distortion.
-     """)
+        """)
 
 # Load the model (only executed once!)
 @st.cache

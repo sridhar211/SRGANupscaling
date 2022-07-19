@@ -12,6 +12,7 @@ COPY app.py /app.py
 COPY setup.py /setup.py
 COPY scripts /scripts
 COPY static /static
+COPY style.css /style.css
 COPY app.yaml /app.yaml
 COPY srgan_model /srgan_model
 
