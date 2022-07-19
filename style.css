@@ -1,0 +1,108 @@
+/* Entire box*/
+.css-fg4pbf {
+    position: absolute;
+    background: rgb(243, 241, 236);
+    color: rgb(52, 78, 65);
+    inset: 0px;
+    overflow: hidden;
+}
+/* Header */
+.css-k0sv6k {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 0;
+  background: rgb(255, 255, 255);
+  outline: none;
+  z-index: 1000020;
+  display: block;
+}
+/* Title */
+.css-10trblm {
+  position: relative;
+  flex: 1 1 0%;
+  margin-left: calc(3rem);
+  font-size: 4rem;
+  color: rgb(52, 78, 65);
+  text-align: center;
+  font-family: Prata;
+  font-weight: 100;
+  top: -50px;
+}
+/* Text */
+p{
+  margin: 0px 0px 1rem;
+  padding: 0px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgb(52, 78, 65);
+  text-align: center;
+  font-family: Prata;
+}
+/* Sidebar */
+.css-1siy2j7 {
+  background: rgb(228, 225, 215);
+  color: rgb(52, 78, 65) ;
+  background-attachment: fixed;
+  flex-shrink: 0;
+  height: calc(100vh - 2px);
+  top: 2px;
+  overflow: overlay;
+  position: relative;
+  transition: margin-left 300ms ease 0s, box-shadow 300ms ease 0s;
+  width: 21rem;
+  z-index: 1000021;
+  margin-left: 0px;
+}
+
+.css-z6wh9q {
+    position: absolute;
+    background: #DAD7CD;
+    color: rgb(52, 78, 65);
+    inset: 0px;
+    overflow: hidden;
+}
+/* upload file text */
+.css-qrbaxs {
+  font-size: 15px;
+  margin-bottom: 7px;
+  height: auto;
+  min-height: 1.5rem;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  color: rgb(52, 78, 65);
+  font-family: Prata
+}
+/* Upload file Box */
+.css-po3vlj {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(228, 225, 215);
+  border-radius: 0.25rem;
+  color: rgb(143, 158, 120);
+  font-family: Prata
+}
+[role="button"] {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(212, 208, 192);
+  border-radius: 0.25rem;
+  color: rgb(143, 158, 120);
+  font-family: Prata;
+  font-size: 18px;
+}
+.st-c5:hover {
+  color: rgb(52, 78, 65);
+}
+.css-znku1x {
+  font-family: Prata;
+  margin-bottom: -1rem;
+}

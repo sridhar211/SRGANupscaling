@@ -7,19 +7,7 @@ from SRGANupscaling.main import super_resolution_model
 from SRGANupscaling.params import MODEL
 import tensorflow_hub as hub
 
-
-CSS = """
-h1 {
-    color: #C18C8C;
-}
-h2 {
-    color: #C18C8C;
-}
-.css-po3vlj {
-    color: #C18C8C;
-    border-radius: 30%;
-}
-"""
+import streamlit as st
 
 st.set_page_config(
     page_title="Pixel Perfect",
@@ -27,14 +15,21 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="auto",
 )
+with open('style.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+st.title('PIXEL PERFECT')
+st.write('Upscale and enhance any image by using our SRGAN model.')
+
 with st.sidebar:
-    st.title("Upscale and enhance any image by using our SRGAN model.")
     st.write("It can used for anything! From preserving old media material to \
             enhancing a microscope’s view, or identifying an individual in CCTV - \
             super-resolution’s impact is widespread and extremely evident.")
-    st.info("✨ It can used for anything! From preserving old media material to \
-             enhancing a microscope’s view, or identifying an individual in CCTV - \
-             super-resolution’s impact is widespread and extremely evident.😉")
+    st.image('static/super_resolution.png')
+    with st.expander("How does it work?"):
+     st.write("""
+         To upscale your image, we use a SRGAN model to super-resolutionise your image with minimal information distortion.
+     """)
 
 # Load the model (only executed once!)
 @st.cache
@@ -43,10 +38,9 @@ def load_model():
 
 model = load_model()
 
-
 # st.header("Pixel Perfect")
-main_image = Image.open('static/main_banner.png')
-st.image(main_image,use_column_width='auto')
+# main_image = Image.open('static/main_banner.png')
+# st.image(main_image,use_column_width='auto')
 # st.title("Upscale and enhance any image by using our SRGAN model.")
 # st.write("It can used for anything! From preserving old media material to \
 #          enhancing a microscope’s view, or identifying an individual in CCTV - \
@@ -60,10 +54,6 @@ st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', uns
 #          super-resolution’s impact is widespread and extremely evident.😉")
 
 uploaded_file = st.file_uploader("Upload Image 🚀", type=["png","jpg","bmp","jpeg"])
-
-
-
-
 
 if uploaded_file is not None:
     col1, col2 = st.columns([1,1])
@@ -82,7 +72,6 @@ if uploaded_file is not None:
         st.markdown("---")
         im = super_resolution_model(image, model)
         st.image(im, caption='Output Image', use_column_width=True)
-
 
     # Convert Image?
 
@@ -105,11 +94,8 @@ if uploaded_file is not None:
         st.balloons()
         st.success('✅ Download Successful !!')
 
-
-
-
-else:
-    st.warning('⚠ Please upload your Image file 😯')
+# else:
+#     st.warning('⚠ Please upload your Image file 😯')
 
 # import time
 
@@ -120,8 +106,5 @@ else:
 #      my_bar.progress(percent_complete + 1)
 
 
-with st.expander("How does it work?"):
-     st.write("""
-         To upscale your image, we use a SRGAN model to super-resolutionise your image with minimal information distortion.
-     """)
+
 st.markdown("<br><hr><center>Enjoy ❤️</center><hr>", unsafe_allow_html=True)
