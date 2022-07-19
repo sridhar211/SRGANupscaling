@@ -52,6 +52,8 @@ def super_resolution(image_uploaded):
     # image = cv2.imread(image_uploaded)
     # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image=np.array(image_uploaded)
+    if image.shape[-1] == 4:
+        image = image[...,:-1]
     img_height, img_width, channels = image.shape
     n_rows, n_cols, tile_height, tile_width = find_split_size(img_height, img_width)
     tiles = image_split(image, (tile_height, tile_width), (n_rows,n_cols))
@@ -66,6 +68,8 @@ def super_resolution_model(image_uploaded, model):
     Final function to call to super resolution image with model as arguments
     '''
     image=np.array(image_uploaded)
+    if image.shape[-1] == 4:
+        image = image[...,:-1]
     img_height, img_width, channels = image.shape
     n_rows, n_cols, tile_height, tile_width = find_split_size(img_height, img_width)
     tiles = image_split(image, (tile_height, tile_width), (n_rows,n_cols))
