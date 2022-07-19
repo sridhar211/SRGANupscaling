@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 from io import BytesIO
+import plotly.express as px
 
 from SRGANupscaling.main import super_resolution_model
 from SRGANupscaling.params import MODEL
@@ -73,7 +74,12 @@ if uploaded_file is not None:
 
     with col1:
         st.markdown("---")
-        st.image(image, caption='Input Image', use_column_width=True)
+        fig = px.imshow(image)
+        fig.update_layout(width=500, height=400, margin=dict(l=1, r=1, b=1, t=1))
+        fig.update_xaxes(showticklabels=False)
+        fig.update_yaxes(showticklabels=False)
+        st.plotly_chart(fig, use_container_width=True)
+        #st.image(image, caption='Input Image', use_column_width=True)
 
     #st.write(os.listdir())
 
@@ -81,7 +87,12 @@ if uploaded_file is not None:
 
         st.markdown("---")
         im = super_resolution_model(image, model)
-        st.image(im, caption='Output Image', use_column_width=True)
+        fig = px.imshow(im)
+        fig.update_layout(width=500, height=400, margin=dict(l=1, r=1, b=1, t=1))
+        fig.update_xaxes(showticklabels=False)
+        fig.update_yaxes(showticklabels=False)
+        st.plotly_chart(fig, use_container_width=True)
+        #st.image(im, caption='Output Image', use_column_width=True)
 
 
     # Convert Image?

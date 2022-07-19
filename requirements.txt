@@ -8,6 +8,7 @@ streamlit
 # data science
 numpy
 matplotlib
+plotly
 tensorflow
 tensorflow_hub
 
