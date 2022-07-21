@@ -13,7 +13,7 @@ import streamlit as st
 st.set_page_config(
     page_title="Pixel Perfect",
     page_icon="💫",
-    layout="centered",
+    layout="wide",
     initial_sidebar_state="auto",
 )
 with open('style.css') as f:
@@ -65,7 +65,8 @@ if uploaded_file is not None:
     with col1:
         st.markdown("---")
         fig = px.imshow(image)
-        fig.update_layout(width=500, height=400, margin=dict(l=1, r=1, b=1, t=1))
+        fig.update_layout(width=500, height=600, margin=dict(l=1, r=1, b=1, t=1))
+        fig.update_layout(hovermode=False)
         fig.update_xaxes(showticklabels=False)
         fig.update_yaxes(showticklabels=False)
         st.plotly_chart(fig, use_container_width=True)
@@ -78,7 +79,8 @@ if uploaded_file is not None:
         st.markdown("---")
         im = super_resolution_model(image, model)
         fig = px.imshow(im)
-        fig.update_layout(width=500, height=400, margin=dict(l=1, r=1, b=1, t=1))
+        fig.update_layout(width=500, height=600, margin=dict(l=1, r=1, b=1, t=1))
+        fig.update_layout(hovermode=False)
         fig.update_xaxes(showticklabels=False)
         fig.update_yaxes(showticklabels=False)
         st.plotly_chart(fig, use_container_width=True)

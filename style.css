@@ -24,7 +24,7 @@
   flex: 1 1 0%;
   margin-left: calc(3rem);
   font-size: 4rem;
-  color: rgb(52, 78, 65);
+  color: rgb(143, 158, 120);
   text-align: center;
   font-family: Prata;
   font-weight: 100;
@@ -36,7 +36,7 @@ p{
   padding: 0px;
   font-size: 1rem;
   font-weight: 400;
-  color: rgb(52, 78, 65);
+  color: rgb(143, 158, 120);
   text-align: center;
   font-family: Prata;
 }
@@ -93,14 +93,14 @@ p{
   -webkit-box-align: center;
   align-items: center;
   padding: 1rem;
-  background-color: rgb(212, 208, 192);
+  background-color: #0E1117;
   border-radius: 0.25rem;
-  color: rgb(143, 158, 120);
+  color: rgb(212, 208, 192);
   font-family: Prata;
   font-size: 18px;
 }
 .st-c5:hover {
-  color: rgb(52, 78, 65);
+  color: rgb(143, 158, 120);
 }
 .css-znku1x {
   font-family: Prata;
