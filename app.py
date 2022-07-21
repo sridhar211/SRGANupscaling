@@ -31,6 +31,15 @@ with st.sidebar:
         st.write("""
          To upscale your image, we use a SRGAN model to super-resolutionise your image with minimal information distortion.
         """)
+    with st.expander("The Team:"):
+        st.write("**Melissa Siddle**")
+        st.write("https://github.com/melissasiddle")
+        st.write("**Obakanyinsola Adegun**")
+        st.write("https://github.com/Akanjii")
+        st.write("**Pablo Gracia Diego**")
+        st.write("https://github.com/Pablograciad")
+        st.write("**Sridhar Ganesh Kumar**")
+        st.write("https://github.com/sridhar211")
 
 # Load the model (only executed once!)
 @st.cache
